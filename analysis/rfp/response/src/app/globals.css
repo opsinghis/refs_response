@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+/*
+  Pandora × Sapient — light theme
+  Pandora pink (#E0218A) + Publicis Sapient red (#E2231A) on a warm light base.
+  Type scale is deliberately large for projector legibility during live sessions.
+*/
+
+@theme inline {
+  --color-bg: #fbf7fa;
+  --color-bg-alt: #f3ebf1;
+  --color-surface: #ffffff;
+  --color-border: #ecdfe8;
+  --color-border-strong: #e0cdda;
+
+  --color-ink: #1c1320;
+  --color-ink-soft: #4a3a4e;
+  --color-muted: #877b8c;
+
+  --color-pandora: #e0218a;
+  --color-pandora-deep: #ad1568;
+  --color-pandora-soft: #fbe6f2;
+
+  --color-sapient: #e2231a;
+  --color-sapient-deep: #b3160f;
+  --color-sapient-soft: #fde6e4;
+
+  --color-berry: #5b2a4e;
+  --color-ok: #1f9d6b;
+  --color-warn: #c97a12;
+  --color-info: #2b6cb0;
+
+  --font-sans: var(--font-display);
+}
+
+:root {
+  --font-display: "Inter", "Segoe UI", system-ui, -apple-system,
+    "Helvetica Neue", Arial, sans-serif;
+  --shadow-soft: 0 1px 2px rgba(28, 19, 32, 0.04),
+    0 8px 24px rgba(28, 19, 32, 0.06);
+  --shadow-pop: 0 10px 40px rgba(224, 33, 138, 0.16);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  /* Larger base for projector readability */
+  font-size: 19px;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Brand gradient used across hero, accents, active states */
+.brand-gradient {
+  background: linear-gradient(115deg, var(--color-pandora) 0%, var(--color-sapient) 100%);
+}
+.brand-gradient-text {
+  background: linear-gradient(115deg, var(--color-pandora) 0%, var(--color-sapient) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom scrollbar (light) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #dcc8d6;
+  border-radius: 6px;
+  border: 2px solid var(--color-bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c9a9c0;
+}
+
+/* Fade/slide-in for section transitions */
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-in {
+  animation: slide-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+.pulse-soft {
+  animation: pulse-soft 2.2s ease-in-out infinite;
+}
+
+/* Thin focus ring for keyboard nav */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-pandora);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Hairline that uses the brand gradient */
+.rule-gradient {
+  height: 3px;
+  border: 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-pandora), var(--color-sapient));
+}
