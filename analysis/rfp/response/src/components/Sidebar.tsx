@@ -31,10 +31,8 @@ export default function Sidebar({
   collapsed: boolean;
   onToggleCollapsed: () => void;
 }) {
-  // Which groups are expanded in the tree. Active group auto-expands.
-  const [expanded, setExpanded] = useState<Set<string>>(
-    () => new Set(groups.map((g) => g.id))
-  );
+  // Which groups are expanded in the tree. Start collapsed; the active group auto-expands.
+  const [expanded, setExpanded] = useState<Set<string>>(() => new Set());
 
   useEffect(() => {
     if (activeGroupId) {
@@ -55,8 +53,11 @@ export default function Sidebar({
       return next;
     });
 
-  // Collapsed parents in the sub-tree (default: all expanded => empty set).
-  const [collapsedSub, setCollapsedSub] = useState<Set<string>>(new Set());
+  // Collapsed parents in the sub-tree. Start with the A.4 subsections collapsed so the
+  // solution sub-tree isn't expanded on load; the active parent auto-expands.
+  const [collapsedSub, setCollapsedSub] = useState<Set<string>>(
+    () => new Set(["sol-overview"])
+  );
   const toggleSub = (id: string) =>
     setCollapsedSub((prev) => {
       const next = new Set(prev);

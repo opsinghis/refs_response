@@ -7,6 +7,29 @@ import SectionView from "./SectionView";
 import Cover from "./Cover";
 import SolutionSection from "./solution/bodies";
 import ObjectiveBlob from "./solution/ObjectiveBlob";
+import ExecutiveSummary from "./exec/ExecutiveSummary";
+import Understanding from "./exec/Understanding";
+import Alignment from "./exec/Alignment";
+import OperationalModel from "./exec/OperationalModel";
+import GenericExecPage from "./exec/GenericExecPage";
+import { a4Objective } from "@/lib/solution";
+import { a1Objective, a2Objective, a3Objective, a5Objective } from "@/lib/exec";
+import { execPages } from "@/lib/execPages";
+
+// Built-out Module-A pages (custom-rendered with the collapsible objective on top).
+const CUSTOM_PAGES: Record<
+  string,
+  {
+    Comp: React.ComponentType<{ onSelect: (id: string) => void }>;
+    code: string;
+    items: { id: string; text: string; detail?: string }[];
+  }
+> = {
+  a1: { Comp: ExecutiveSummary, code: "A.1", items: a1Objective },
+  a2: { Comp: Understanding, code: "A.2", items: a2Objective },
+  a3: { Comp: Alignment, code: "A.3", items: a3Objective },
+  a5: { Comp: OperationalModel, code: "A.5", items: a5Objective },
+};
 
 interface FlatEntry {
   sectionId: string;
@@ -28,7 +51,7 @@ export default function Shell() {
     []
   );
 
-  const [activeId, setActiveId] = useState<string>("welcome");
+  const [activeId, setActiveId] = useState<string>("a1");
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -164,9 +187,38 @@ export default function Shell() {
           <div className="mx-auto max-w-[1600px] px-6 py-10 md:px-14 md:py-14 2xl:px-20">
             {isWelcome ? (
               <Cover groups={groups} onSelect={select} onStart={goNext} />
+            ) : CUSTOM_PAGES[activeId] ? (
+              (() => {
+                const C = CUSTOM_PAGES[activeId];
+                return (
+                  <>
+                    <ObjectiveBlob
+                      code={C.code}
+                      items={C.items}
+                      footer="The page below delivers against this objective."
+                    />
+                    <C.Comp onSelect={select} />
+                  </>
+                );
+              })()
+            ) : execPages[activeId] ? (
+              <>
+                <ObjectiveBlob
+                  code={execPages[activeId].code}
+                  items={execPages[activeId].objective}
+                  footer="The page below delivers against this objective."
+                />
+                <GenericExecPage id={activeId} onSelect={select} />
+              </>
             ) : activeId.startsWith("sol-") ? (
               <>
-                {!["sol-commerce", "sol-context-graph"].includes(activeId) && <ObjectiveBlob />}
+                {!["sol-commerce", "sol-context-graph"].includes(activeId) && (
+                  <ObjectiveBlob
+                    code="A.4"
+                    items={a4Objective}
+                    footer="The subsections below (A.4.1–A.4.4) deliver against this objective."
+                  />
+                )}
                 <SolutionSection id={activeId} onSelect={select} />
               </>
             ) : activeSection && activeEntry ? (

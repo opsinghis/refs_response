@@ -17,91 +17,13 @@ export const groups: Group[] = [
     label: "Overall Proposal",
     subtitle: "Scope & approach — submission component #1",
     sections: [
-      {
-        id: "a1",
-        num: "A.1",
-        title: "Executive Summary",
-        blocks: [
-          {
-            type: "lead",
-            text: "Pandora is moving from a reactive, manual model to a proactive, AI-enabled one. We open the response by naming that ambition and committing to it as a partner who executes and elevates — not a traditional provider.",
-          },
-          {
-            type: "list",
-            items: [
-              "A.1.1 — Our understanding of Pandora's transformation goal (reactive/manual → proactive/AI-enabled)",
-              "A.1.2 — The single value proposition: enterprise data & platforms 'as one product', days → minutes",
-              "A.1.3 — Why we are the right Strategic Partner (not a traditional provider) — execute and elevate",
-              "A.1.4 — Headline commitments (efficiency, value-share, talent retention, zero-disruption transition)",
-              "A.1.5 — Summary of proposed engagement across all three sub-domains",
-            ],
-          },
-          {
-            type: "placeholder",
-            title: "Solution placeholder — Executive narrative",
-            text: "Author the one-page narrative that frames the whole bid. Lead with the days-to-minutes outcome and the 'one team' principle.",
-            items: [
-              "Signature headline statistic and the single sentence value proposition",
-              "Three-to-five headline commitments tied to evaluation focus areas",
-              "Visual: target-state at a glance across Data, Integration, DevOps",
-            ],
-          },
-        ],
-      },
-      {
-        id: "a2",
-        num: "A.2",
-        title: "Understanding of Pandora's Context & Pain Points",
-        blocks: [
-          {
-            type: "lead",
-            text: "We prove we have listened. Each pain point below is mirrored later by a concrete commitment in Modules B and C.",
-          },
-          {
-            type: "list",
-            items: [
-              "A.2.1 — The federation problem: autonomy-driven non-standard patterns; tool duplication (MuleSoft, Solace, Ark)",
-              "A.2.2 — Legacy debt: >50% of data-transfer use cases on BizTalk 2020 / EDW / Synapse; deprecation decided, no plan/budget",
-              "A.2.3 — Skills concentration risk: SaaS-specialist engineers; gaps in Kubernetes, Kafka, modern DevOps fundamentals",
-              "A.2.4 — The enablement / education imperative (a stated 'critical responsibility')",
-              "A.2.5 — Scale snapshot (below)",
-            ],
-          },
-          {
-            type: "stats",
-            items: [
-              { value: ">650", label: "engineers supported" },
-              { value: "50+", label: "data-platform teams" },
-              { value: "100+", label: "streaming apps" },
-              { value: "~300M", label: "events / day" },
-              { value: "~1,500", label: "non-engineer tooling users" },
-              { value: ">50%", label: "use cases on legacy platforms" },
-            ],
-          },
-        ],
-      },
-      {
-        id: "a3",
-        num: "A.3",
-        title: "Strategic & Objective Alignment",
-        tags: ["focus"],
-        blocks: [
-          {
-            type: "list",
-            items: [
-              "A.3.1 — Mapping our solution to Pandora's overarching business goals (profitability, market growth, global scale)",
-              "A.3.2 — Reducing service turnaround from days to minutes (self-service + automated workflows)",
-              "A.3.3 — Embedding AI, observability, and SRE into daily operations",
-              "A.3.4 — 'Pandora leads; vendor executes and elevates' — how we operationalise the engagement principle",
-            ],
-          },
-          {
-            type: "placeholder",
-            title: "Solution placeholder — Alignment map",
-            text: "Build the explicit traceability from business goal → platform capability → measurable outcome.",
-          },
-        ],
-      },
+      // A.1 — built-out Executive Summary page (custom-rendered with the objective
+      // collapsible at the top). See components/exec/ExecutiveSummary.tsx.
+      { id: "a1", num: "A.1", title: "Executive Summary", blocks: [] },
+      // A.2 & A.3 — built-out custom pages (objective collapsible on top).
+      // See components/exec/Understanding.tsx and Alignment.tsx.
+      { id: "a2", num: "A.2", title: "Understanding of Context & Pain Points", blocks: [] },
+      { id: "a3", num: "A.3", title: "Strategic & Objective Alignment", tags: ["focus"], blocks: [] },
       // A.4 — the interactive Overall Solution Approach. Subsections mirror the A.4
       // objective exactly (A.4.1 architecture → A.4.5 operating model). Sections prefixed
       // "sol-" are rendered by SolutionSection (diagrams), with the A.4 objective shown as
@@ -111,270 +33,24 @@ export const groups: Group[] = [
       { id: "sol-goldenpath", num: "A.4.3", title: "Golden-Path Operating Concept", tags: ["response"], blocks: [] },
       { id: "sol-interlock", num: "A.4.4", title: "How the Sub-domains Interlock", blocks: [] },
       { id: "sol-operating-model", num: "A.4.5", title: "AI-Native Operating Model", tags: ["response"], blocks: [] },
+      // A.5 — built-out Operational Model page with the global delivery world map.
+      // See components/exec/OperationalModel.tsx.
+      { id: "a5", num: "A.5", title: "Operational Model (Overall)", tags: ["submission", "focus"], blocks: [] },
       {
-        id: "a5",
-        num: "A.5",
-        title: "Operational Model (Overall)",
-        tags: ["submission", "focus"],
-        blocks: [
-          {
-            type: "list",
-            items: [
-              "A.5.1 — Team-centred, geographically distributed model (offices, stores, factories, HQ)",
-              "A.5.2 — Mix of Pandora employees + partner resources operating as one team",
-              "A.5.3 — Domain-team structure aligned to the three independent platform domains",
-              "A.5.4 — How the structure supports both daily operations and transformation",
-            ],
-          },
-          {
-            type: "placeholder",
-            title: "Solution placeholder — Operating model diagram",
-            text: "Show pod/domain structure, the one-team embedding model, and onshore/nearshore/offshore distribution.",
-          },
-        ],
+        // A.6 – A.16: built-out, data-driven pages (GenericExecPage + src/lib/execPages.ts).
+        // Objective blobs with carried "To author" notes live in execPages; blocks unused here.
+        id: "a6", num: "A.6", title: "Governance & Relationship Management", tags: ["focus"], blocks: [],
       },
-      {
-        id: "a6",
-        num: "A.6",
-        title: "Governance & Relationship Management",
-        tags: ["focus"],
-        blocks: [
-          {
-            type: "list",
-            items: [
-              "A.6.1 — Governance model across practical and executive levels",
-              "A.6.2 — Operational cadences (team/domain-level + monthly performance feedback Eng Manager → vendor manager)",
-              "A.6.3 — Escalation paths and joint incident/problem management",
-              "A.6.4 — Transparent relationship management & reporting framework",
-              "A.6.5 — Service-review cadence (reliability, adoption, DevEx, cost, continuous-improvement backlog)",
-            ],
-          },
-          {
-            type: "placeholder",
-            title: "Solution placeholder — Governance cadence calendar",
-            text: "Daily / weekly / monthly / quarterly cadence map with attendees, inputs, and decisions at each tier.",
-          },
-        ],
-      },
-      {
-        id: "a7",
-        num: "A.7",
-        title: "Evolution & Innovation Approach",
-        tags: ["focus"],
-        blocks: [
-          {
-            type: "list",
-            items: [
-              "A.7.1 — Formalized continuous-improvement framework (technical-debt reduction, workflow optimisation)",
-              "A.7.2 — Proactive automation introduction over the contract lifecycle",
-              "A.7.3 — Cross-vertical mechanisms & methodologies reusable across TS&F",
-              "A.7.4 — Documented current competencies + near-future transformation path",
-              "A.7.5 — Agility model — adapting transformation cycles to unprecedented technology pace",
-            ],
-          },
-          {
-            type: "placeholder",
-            title: "Solution placeholder — Innovation engine",
-            text: "Describe the innovation intake → backlog → experiment → adopt loop, plus the cross-vertical reuse model.",
-          },
-        ],
-      },
-      {
-        id: "a8",
-        num: "A.8",
-        title: "Implementation & Execution Model (Overall)",
-        tags: ["submission"],
-        blocks: [
-          {
-            type: "list",
-            variant: "arrow",
-            items: [
-              "A.8.1 — Phase 1: Preparation, upskilling, and platform spin-up",
-              "A.8.2 — Phase 2: Transition and consolidation period",
-              "A.8.3 — Phase 3: Transformation cycles (months/years to follow)",
-              "A.8.4 — Major milestones with success criteria and dependencies (prior activities + external factors)",
-              "A.8.5 — Agile planning model for transformation cycles",
-              "A.8.6 — Master roadmap (overall) — per-vertical detail in Modules B & C",
-            ],
-          },
-          {
-            type: "placeholder",
-            title: "Solution placeholder — Master roadmap (Gantt)",
-            text: "Insert the overall timeline with milestones, success criteria, and dependency markers; agility built in.",
-          },
-        ],
-      },
-      {
-        id: "a9",
-        num: "A.9",
-        title: "Resource Pool & Talent Strategy (Overall)",
-        tags: ["focus"],
-        blocks: [
-          {
-            type: "list",
-            items: [
-              "A.9.1 — Talent pipeline and sourcing model",
-              "A.9.2 — Training infrastructure & continuous upskilling commitment",
-              "A.9.3 — Team scaling capability",
-              "A.9.4 — Key-personnel retention & continuity strategy",
-              "A.9.5 — Named lead profiles summary (full profiles in Modules B/C and Appendix E.3)",
-            ],
-          },
-          {
-            type: "placeholder",
-            title: "Solution placeholder — Talent & retention model",
-            text: "Pipeline funnel, academy/upskilling tracks, attrition targets, and continuity guarantees for key roles.",
-          },
-        ],
-      },
-      {
-        id: "a10",
-        num: "A.10",
-        title: "Transition & Knowledge Transfer Blueprint (Overall)",
-        tags: ["focus"],
-        blocks: [
-          {
-            type: "list",
-            items: [
-              "A.10.1 — Transition blueprint and operating principle: zero business disruption",
-              "A.10.2 — Risk-mitigation strategies",
-              "A.10.3 — Shadowing processes (on-parallel shadow of current teams)",
-              "A.10.4 — System discovery methodologies",
-              "A.10.5 — Bi-weekly readiness / on-call assessment mechanism",
-            ],
-          },
-          {
-            type: "placeholder",
-            title: "Solution placeholder — Transition blueprint",
-            text: "Discovery → shadow → reverse-shadow → autonomy model with gates, RACI shifts, and rollback safety.",
-          },
-        ],
-      },
-      {
-        id: "a11",
-        num: "A.11",
-        title: "Cyber Security, Compliance, and Risk",
-        tags: ["focus"],
-        blocks: [
-          {
-            type: "list",
-            items: [
-              "A.11.1 — Internal security posture",
-              "A.11.2 — Secure development lifecycle (SDLC)",
-              "A.11.3 — Data privacy & GDPR adherence",
-              "A.11.4 — Business continuity / disaster recovery protocols",
-              "A.11.5 — Operating within Pandora's AI-governance and security guardrails (with the dedicated Security team)",
-              "A.11.6 — Supply-chain hygiene, RBAC, network policy, image hygiene",
-            ],
-          },
-          {
-            type: "placeholder",
-            title: "Solution placeholder — Security & compliance dossier",
-            text: "Certifications, SDLC controls, GDPR posture, BCP/DR runbooks, and AI-governance guardrails. Evidence in Appendix E.8.",
-          },
-        ],
-      },
-      {
-        id: "a12",
-        num: "A.12",
-        title: "Cultural Compatibility & Collaboration",
-        tags: ["focus"],
-        blocks: [
-          {
-            type: "list",
-            items: [
-              "A.12.1 — Communication style and organisational agility",
-              "A.12.2 — Transparency regarding past failures (lessons-learned evidence)",
-              "A.12.3 — Alignment with Pandora's corporate culture and collaborative mindset",
-              "A.12.4 — Onsite synergy model (expected onsite 1–2 times/year; Copenhagen)",
-            ],
-          },
-          {
-            type: "placeholder",
-            title: "Solution placeholder — Culture & ways of working",
-            text: "Demonstrate transparency with a real lessons-learned story and the collaboration rituals we bring.",
-          },
-        ],
-      },
-      {
-        id: "a13",
-        num: "A.13",
-        title: "Sustainability",
-        tags: ["focus"],
-        blocks: [
-          {
-            type: "list",
-            items: [
-              "A.13.1 — Support for Pandora's sustainability objectives",
-              "A.13.2 — Responsible sourcing",
-              "A.13.3 — Energy-efficient operations & emissions reduction (incl. cloud/compute optimisation)",
-              "A.13.4 — Transparent environmental reporting",
-              "A.13.5 — Responsible lifecycle management of technology assets",
-            ],
-          },
-          {
-            type: "placeholder",
-            title: "Solution placeholder — Sustainability commitments",
-            text: "Tie cloud/compute right-sizing to emissions reduction; define reporting cadence and metrics. Evidence in Appendix E.9.",
-          },
-        ],
-      },
-      {
-        id: "a14",
-        num: "A.14",
-        title: "Commercial Model (Overall)",
-        tags: ["focus", "commercial"],
-        blocks: [
-          {
-            type: "list",
-            items: [
-              "A.14.1 — Commercial model overview for the vertical",
-              "A.14.2 — Concrete value-share mechanisms (e.g., year-on-year productivity cost-downs)",
-              "A.14.3 — How operational savings & efficiency gains return to Pandora",
-              "A.14.4 — Pointer to completed quotation files (Module D)",
-            ],
-          },
-          {
-            type: "callout",
-            variant: "info",
-            title: "Cross-reference",
-            text: "Detailed pricing and the completed quotation template live in Module D (Excel).",
-          },
-        ],
-      },
-      {
-        id: "a15",
-        num: "A.15",
-        title: "Architectural & Technological Fit Summary",
-        tags: ["focus"],
-        blocks: [
-          {
-            type: "list",
-            items: [
-              "A.15.1 — Certified expertise across Pandora's core stack (Azure, AKS, Kafka/Confluent, Databricks, Kong, GitHub, Terraform, New Relic, Power BI)",
-              "A.15.2 — Ability to design future-state solutions within Pandora's standards and risk appetite",
-              "A.15.3 — Detailed technology mapping → Appendix E.1",
-            ],
-          },
-        ],
-      },
-      {
-        id: "a16",
-        num: "A.16",
-        title: "Why This Submission Wins — vs the 11 Focus Areas",
-        blocks: [
-          {
-            type: "para",
-            text: "A.16.1 — Traceability summary table (focus area → where addressed) → Appendix E.5.",
-          },
-          {
-            type: "callout",
-            variant: "ok",
-            title: "Scoring guidance honoured",
-            text: "Every focus area has a dedicated home in the response, with what-level operational specifics rather than generic marketing (RFP p.9).",
-          },
-        ],
-      },
+      { id: "a7", num: "A.7", title: "Evolution & Innovation Approach", tags: ["focus"], blocks: [] },
+      { id: "a8", num: "A.8", title: "Implementation & Execution Model (Overall)", tags: ["submission"], blocks: [] },
+      { id: "a9", num: "A.9", title: "Resource Pool & Talent Strategy (Overall)", tags: ["focus"], blocks: [] },
+      { id: "a10", num: "A.10", title: "Transition & Knowledge Transfer Blueprint (Overall)", tags: ["focus"], blocks: [] },
+      { id: "a11", num: "A.11", title: "Cyber Security, Compliance, and Risk", tags: ["focus"], blocks: [] },
+      { id: "a12", num: "A.12", title: "Cultural Compatibility & Collaboration", tags: ["focus"], blocks: [] },
+      { id: "a13", num: "A.13", title: "Sustainability", tags: ["focus"], blocks: [] },
+      { id: "a14", num: "A.14", title: "Commercial Model (Overall)", tags: ["focus", "commercial"], blocks: [] },
+      { id: "a15", num: "A.15", title: "Architectural & Technological Fit Summary", tags: ["focus"], blocks: [] },
+      { id: "a16", num: "A.16", title: "Why This Submission Wins — vs the 11 Focus Areas", blocks: [] },
     ],
   },
 
